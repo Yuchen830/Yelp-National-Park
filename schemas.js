@@ -5,6 +5,7 @@ module.exports.nationalparkSchema = Joi.object ({
     nationalpark: Joi.object({
         title: Joi.string().required(),
         price: Joi.number().required().min(0),
+        phone: Joi.string(),
         info: Joi.string().required(),
         //image: Joi.string().required(),
         location: Joi.string().required(),

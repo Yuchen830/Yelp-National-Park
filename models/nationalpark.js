@@ -31,6 +31,7 @@ const NationalparkSchema = new Schema ({
         }
     },
     price: Number,
+    phone: String,
     info: String,
     description: String,
     location: String,

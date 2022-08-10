@@ -34,15 +34,17 @@
 
             <ul class="list-group list-group-flush">
                 <li class="list-group-item text-muted"><%= nationalpark.location%></li>
-                <li class="list-group-item">Entry Fee: $<%= nationalpark.price%> per vehicle</li>
+                <li class="list-group-item"><strong> Entry Fee: </strong>$<%= nationalpark.price%> per vehicle</li>
+                <li class="list-group-item"> <strong> Contact Park </strong><br>
+                     Phone: <%= nationalpark.phone%> <br> </li>
                 <li class="list-group-item text-muted">
-                    For more infomation: <a href="<%= nationalpark.info%>"> <%= nationalpark.info%> </a>
+                    <strong> For more infomation: </strong> <a href="<%= nationalpark.info%>"> <%= nationalpark.info%> </a>
                 </li>
             </ul>
 
             <% if(currentUser && nationalpark.author.equals(currentUser._id)) { %>
             <div class="card-body">
-                <a class="card-link btn btn-info" href="/nationalparks/<%=nationalpark._id%>/edit">Edit</a>
+                <a class="card-link btn btn-info" href="/nationalparks/<%=nationalpark._id%>/edit"> &nbsp Edit &nbsp </a> &nbsp&nbsp
                 <form class="d-inline" action="/nationalparks/<%=nationalpark._id%>?_method=DELETE" method="POST">
                     <button class="btn btn-danger">Delete</button>
                 </form>
@@ -51,7 +53,7 @@
 
             <div class="card-footer text-muted">
                 <li class="list-group-item">2 days ago </li>
-                <li class="list-group-item">Submitted by <%= nationalpark.author.username%></li>
+                <li class="list-group-item">Created by <%= nationalpark.author.username%></li>
             </div>
         </div>
 
