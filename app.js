@@ -41,8 +41,10 @@ const app = express();
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
 app.use(express.urlencoded({ extended: true}));
 app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(mongoSanitize());
 
 const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
@@ -93,7 +95,6 @@ app.use((req, res, next) => {
 app.use('/', userRoutes);
 app.use('/nationalparks', nationalparkRoutes)
 app.use('/nationalparks/:id/reviews', reviewRoutes)
-app.use(express.static(path.join(__dirname, 'public')))
 
 
 app.get('/', (req, res) => {

@@ -10,7 +10,7 @@ const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 // routes for the park index page
 module.exports.index = async (req, res) => {
     const nationalparks = await Nationalpark.find({});
-    res.render('nationalParks/index', {nationalparks})
+    res.render('nationalparks/index', {nationalparks})
 }
 
 
