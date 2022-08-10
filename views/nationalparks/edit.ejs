@@ -1,0 +1,60 @@
+<% layout('layouts/boilerplate') %> 
+
+    <div class="row">
+        <h1 class="text-center">Edit Park Details</h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/nationalparks/<%= nationalpark._id %>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+    
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="nationalpark[title]" value="<%=nationalpark.title %>" required>
+                </div >
+                
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="nationalpark[location]" value="<%= nationalpark.location %>" required>
+                </div>
+    
+                <div class="input-group mb-3">
+                    <label class="form-label" for="">Edit Images</label>
+                    <div class="input-group " >
+                        <input type="file" class="form-control" id="image" name="image" multiple>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <% nationalpark.images.forEach(function(img, i) { %> 
+                        <img src="<%= img.thumbnail %>" class="img-thumbnail" alt="">
+                    <div class="form-check-inline">
+                        <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+                    </div>
+                    <label for="image-<%=i%>">Delete?</label>
+                    <% })%>
+                </div>
+
+    
+                <div class="mb-3">
+                    <label class="form-label" for="price">National Park Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">$</span>
+                        <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                            aria-describedby="price-label" name="nationalpark[price]" value="<%= nationalpark.price %> " required>
+                    </div>
+                </div>
+    
+                <div class="mb-4">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="nationalpark[description]" placeholder="Description" required> <%= nationalpark.description %> </textarea>
+                </div>
+        
+                <div class="mb-3">
+                    <button class="btn btn-success">Update National Park</button>
+                </div>
+    
+            </form>
+        
+        
+        </div>
+    </div>
+
+ 
