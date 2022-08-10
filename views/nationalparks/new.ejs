@@ -27,10 +27,17 @@
                 <label class="form-label" for="price">National Park Price</label>
                 <div class="input-group">
                     <span class="input-group-text" id="price-label">$</span>
-                    <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                    <input type="text" class="form-control" id="price" placeholder="Entry per vehicle" aria-label="price"
                         aria-describedby="price-label" name="nationalpark[price]" required>
                 </div>
             </div>
+
+            <!-- // new one -->
+            <div class="mb-3">
+                <label class="form-label" for="location">Official Website</label>
+                <input class="form-control" type="link" id="info" name="nationalpark[info]" placeholder="Link to the park" >
+            </div>
+
 
             <div class="mb-4">
                 <label class="form-label" for="description">Description</label>

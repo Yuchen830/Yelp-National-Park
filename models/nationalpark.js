@@ -31,6 +31,7 @@ const NationalparkSchema = new Schema ({
         }
     },
     price: Number,
+    info: String,
     description: String,
     location: String,
     author: {

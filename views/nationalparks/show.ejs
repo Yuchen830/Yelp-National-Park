@@ -6,13 +6,13 @@
         <div id="nationalparkCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <% nationalpark.images.forEach((img, i)=> { %>
-                <div class="carousel-item active <%= i === 0 ? 'active' : '' %>">
+                <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
                     <img src="<%= img.url%>" class="d-block w-100" alt="...">
                 </div>
                 <% }) %>
 
             </div>
-            <% if(nationalpark.images.length> 1) { %>
+            <% if(nationalpark.images.length > 1) { %>
             <button class="carousel-control-prev" type="button" data-bs-target="#nationalparkCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
@@ -34,8 +34,10 @@
 
             <ul class="list-group list-group-flush">
                 <li class="list-group-item text-muted"><%= nationalpark.location%></li>
-                <li class="list-group-item">Submitted by <%= nationalpark.author.username%></li>
-                <li class="list-group-item">$<%= nationalpark.price%>/entry</li>
+                <li class="list-group-item">Entry Fee: $<%= nationalpark.price%> per vehicle</li>
+                <li class="list-group-item text-muted">
+                    For more infomation: <a href="<%= nationalpark.info%>"> <%= nationalpark.info%> </a>
+                </li>
             </ul>
 
             <% if(currentUser && nationalpark.author.equals(currentUser._id)) { %>
@@ -48,7 +50,8 @@
             <% } %>
 
             <div class="card-footer text-muted">
-                    2 days ago
+                <li class="list-group-item">2 days ago </li>
+                <li class="list-group-item">Submitted by <%= nationalpark.author.username%></li>
             </div>
         </div>
 
@@ -58,7 +61,7 @@
         <div id='map' style='width: 100%; height: 300px;' class="mb-3"></div>
 
         <% if(currentUser) { %>
-            <h2>Leave a Review</h2>
+            <h2>Leave a Comment</h2>
             <form action="/nationalparks/<%=nationalpark._id%>/reviews" method="POST" class="mb-3 validated-form" ovalidate>
 
                 <div>
@@ -78,7 +81,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="body">Review</label>
+                    <label class="form-label" for="body">Comment</label>
                     <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"required></textarea>
                 </div>
 
